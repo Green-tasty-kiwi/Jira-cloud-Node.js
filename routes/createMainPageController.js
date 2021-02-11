@@ -9,7 +9,7 @@ module.exports = ({
     const statuses = await statusesGateway.findAll();
 
     const issues = await issuesGateway.findAll({
-        filter: request.query.filter
+        filter: request.query.filter || filters.values[0].id
     });
 
     const users = {};
@@ -27,6 +27,10 @@ module.exports = ({
         }
 
         users[accountId].issues[issue.fields.status.name] += 1;
+    }
+
+    response.query = {
+        filter: request.query.filter || filters.values[0].id
     }
 
     response.render("main-page", {
