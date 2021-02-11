@@ -17,13 +17,13 @@ module.exports = ({
         if (!issue.fields.assignee) continue
         const accountId = issue.fields.assignee.accountId;
 
-        if (!users[issue.assignee]) {
+        if (!users[accountId]) {
             users[accountId] = {
                 issues: {},
                 displayName: issue.fields.assignee.displayName
             };
 
-            statuses.forEach(({ name }) => users[accountId].issues[name] = 0)
+            statuses.forEach((status) => users[accountId].issues[status.name] = 0)
         }
 
         users[accountId].issues[issue.fields.status.name] += 1;
