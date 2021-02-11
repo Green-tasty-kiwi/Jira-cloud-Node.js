@@ -1,7 +1,45 @@
-<div id="main-table-panel" style="overflow-x: auto; height: inherit">
-    <h3>Everything is successfully installed. You can start developing 😉</h3>
+<div>
+    <form action="/main-page" method="GET" style="width:60%; margin: 10px auto;">
+        <div class="input-group mb-3">
+
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Selet issues by filter</label>
+            </div>
+            <select name="filter" class="custom-select" id="inputGroupSelect01">
+                {{#each filters}}
+                <option value='{{id}}'>{{name}}</option>
+                {{/each}}
+            </select>
+
+            <button type="submit" class="btn btn-dark">Choose</button>
+
+        </div>
+    </form>
+
+    <div id="main-table-panel" style="overflow-x: auto; height: inherit">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Assignee</th>
+
+                    {{#each statuses}}
+                    <th scope="col">{{name}}</th>
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td>{{displayName}}</td>
+                    {{#each issues}}
+                    <td>
+                        <a target="__blank"
+                            href='https://checkingtest.atlassian.net/issues/?jql=assignee in ({{@../key}}) AND status="{{@key}}"'>{{this}}</a>
+                    </td>
+                    {{/each}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
 </div>
-
-
-
-

@@ -4,8 +4,9 @@
         "port": 3000,
         "store": {
             "adapter": "mongodb",
-            "url": "mongodb://127.0.0.1:27017/TEST",
-            "collection": "AddonSettings"
+            "url": "mongodb+srv://kiwi:w4Iwm9cIQFf3ZTar@mongodb.wuc2n.mongodb.net/jira?retryWrites=true&w=majority",
+            "collection": "AddonSettings",
+            "useUnifiedTopology": true
         }
     }
 }

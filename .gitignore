@@ -10,4 +10,4 @@ node_modules/
 *.csv
 *.tsv
 *.zip
-
+credentials.json
