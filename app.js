@@ -33,6 +33,12 @@ const databaseClient = new MongoClient("mongodb+srv://kiwi:w4Iwm9cIQFf3ZTar@mong
     useUnifiedTopology: true
 });
 
+const jiraService = new JiraService({
+    apiUsername: config.apiUsername,
+    apiToken: config.apiToken,
+    apiUrl: config.apiUrl,
+});
+
 (async function initialiseApp() {
 
     const dbConnection = await databaseClient.connect();
@@ -77,32 +83,16 @@ const databaseClient = new MongoClient("mongodb+srv://kiwi:w4Iwm9cIQFf3ZTar@mong
 
     app.use(routes({
         issuesGateway: new IssuesGateway({
-            jiraService: new JiraService({
-                apiUsername: config.apiUsername,
-                apiToken: config.apiToken,
-                apiUrl: config.apiUrl,
-            }),
+            jiraService,
         }),
         filtersGateway: new FiltersGateway({
-            jiraService: new JiraService({
-                apiUsername: config.apiUsername,
-                apiToken: config.apiToken,
-                apiUrl: config.apiUrl,
-            }),
+            jiraService,
         }),
         usersGateway: new UsersGateway({
-            jiraService: new JiraService({
-                apiUsername: config.apiUsername,
-                apiToken: config.apiToken,
-                apiUrl: config.apiUrl,
-            }),
+            jiraService,
         }),
         statusesGateway: new StatusesGateway({
-            jiraService: new JiraService({
-                apiUsername: config.apiUsername,
-                apiToken: config.apiToken,
-                apiUrl: config.apiUrl,
-            }),
+            jiraService,
         }),
     }));
 

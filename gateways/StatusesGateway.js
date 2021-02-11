@@ -6,6 +6,4 @@ module.exports = class FiltersGateway {
     findAll() {
         return this._jiraService.send({ url: '/status' })
     }
-
-
 }

@@ -10,6 +10,4 @@ module.exports = class UsersGateway {
 
         return users.filter(({ accountType }) => accountType === 'atlassian');
     }
-
-
 }
