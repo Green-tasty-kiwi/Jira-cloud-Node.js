@@ -7,10 +7,10 @@
         "name": "SaaSJet",
         "url": "https://saasjet.com"
     },
-    "baseUrl": "https://be315aa577a0.ngrok.io",
+    "baseUrl": "https://jira-cloud-nodejs.herokuapp.com",
     "links": {
-        "self": "https://be315aa577a0.ngrok.io/atlassian-connect.json",
-        "homepage": "https://be315aa577a0.ngrok.io/atlassian-connect.json"
+        "self": "https://jira-cloud-nodejs.herokuapp.com/atlassian-connect.json",
+        "homepage": "https://jira-cloud-nodejs.herokuapp.com/atlassian-connect.json"
     },
     "authentication": {
         "type": "jwt"
