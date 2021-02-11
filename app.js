@@ -10,6 +10,7 @@ const hbs = require('express-hbs');
 const http = require('http');
 const path = require('path');
 const os = require('os');
+const fs = require('fs');
 const routes = require('./routes');
 const api = require('./api');
 const config = require('./config')
@@ -49,13 +50,18 @@ const databaseClient = new MongoClient("mongodb+srv://kiwi:w4Iwm9cIQFf3ZTar@mong
 
     const devEnv = app.get('env') == 'development';
 
+    const appLogStream = fs.createWriteStream(path.join(__dirname, 'app.log'), { flags: 'a' });
+
     app.set('port', port);
 
     app.set('view engine', 'hbs');
 
     app.set('views', viewsDir);
 
-    app.use(morgan(devEnv ? 'dev' : 'combined'));
+    app.use(morgan('tiny', {
+        interval: '7d',
+        stream: appLogStream,
+    }));
 
     app.use(compression());
 
